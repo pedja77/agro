@@ -25,8 +25,9 @@
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-md-3">
-                        <sidebar-menu  onclick="handleClick(event)"/>
+                        {{-- <sidebar-menu  onclick="handleClick(event)"/> --}}
                          {{-- :categories="{{ json_encode($categories) }}" --}}
+                         {{ json_encode($categories) }}
                     </div>
                     <div class="col-md-9">
                         @yield('content')

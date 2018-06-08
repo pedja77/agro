@@ -1,5 +1,5 @@
 @extends('./layouts/master')
 
 @section('content')
-    {{ $newProducts }}
+    {{ json_encode($categories) }}
 @endsection

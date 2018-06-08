@@ -11,13 +11,13 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Catalog</a>
+        <a class="nav-link" href="/catalog">Catalog</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sale</a>
+        <a class="nav-link" href="/sale">Sale</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Services</a>
+        <a class="nav-link" href="/services">Services</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

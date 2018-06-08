@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-Route::get('/categories', 'CategoryController@index');
+Route::get('/', 'HomeController@setHome')->name('home');
+Route::get('/catalog', 'CatalogController@setCatalog')->name('catalog');
+Route::get('/sale', 'SaleController@setSale')->name('sale');
+Route::get('/services', 'ServicesController@setServices')->name('services');

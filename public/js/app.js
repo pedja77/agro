@@ -13872,9 +13872,12 @@ module.exports = __webpack_require__(43);
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SidebarMenu_vue__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SidebarMenu_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_SidebarMenu_vue__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -13891,10 +13894,20 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(39));
+//Vue.component("sidebar-menu", require("./components/SidebarMenu.vue"))
+
+
+Vue.mixin({
+    methods: {
+        route: route
+    }
+});
 
 var app = new Vue({
-  el: '#app'
+    el: "#app",
+    components: {
+        SidebarMenu: __WEBPACK_IMPORTED_MODULE_0__components_SidebarMenu_vue___default.a
+    }
 });
 
 /***/ }),
@@ -47175,7 +47188,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
+Component.options.__file = "resources/assets/js/components/SidebarMenu.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47184,9 +47197,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
+    hotAPI.createRecord("data-v-380814f4", Component.options)
   } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
+    hotAPI.reload("data-v-380814f4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47323,14 +47336,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['categories'],
+    methods: {
+        emit: function emit(event) {
+            this.$emit('comp-clicked', event);
+        }
+    },
     mounted: function mounted() {
-        console.log('Component mounted.');
+        console.log('Component mounted.', this.categories);
     }
 });
 
@@ -47342,38 +47357,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
-        ])
-      ])
+  return _c("div", { staticClass: "card card-default" }, [
+    _c("div", { staticClass: "card-header" }, [_vm._v("Select Category")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c(
+        "a",
+        { staticClass: "btn btn-primary", attrs: { href: _vm.route("home") } },
+        [_vm._v("Click")]
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-380814f4", module.exports)
   }
 }
 

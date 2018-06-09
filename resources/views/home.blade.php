@@ -2,6 +2,7 @@
 
 @section('content')
     <div>
-    {{ $newProducts }}
+    {{-- {{ $newProducts }} --}}
+    <main-content :items="{{ json_encode($newProducts) }}"/>
     </div>
 @endsection

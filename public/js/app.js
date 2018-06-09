@@ -47336,16 +47336,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['categories'],
-    methods: {
-        emit: function emit(event) {
-            this.$emit('comp-clicked', event);
-        }
+    data: function data() {
+        return {
+            visibleSubCategories: []
+        };
     },
-    mounted: function mounted() {
-        console.log('Component mounted.', this.categories);
+
+    methods: {
+        toggleSubCategories: function toggleSubCategories(index) {
+            if (this.visibleSubCategories.indexOf(index) > -1) {
+                this.visibleSubCategories.splice(this.visibleSubCategories.indexOf(index), 1);
+            } else {
+                this.visibleSubCategories.push(index);
+            }
+        }
     }
 });
 
@@ -47357,16 +47382,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card card-default" }, [
-    _c("div", { staticClass: "card-header" }, [_vm._v("Select Category")]),
+  return _c("div", [
+    _c("h4", [_vm._v("Categories")]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: _vm.route("home") } },
-        [_vm._v("Click")]
-      )
-    ])
+    _c(
+      "ul",
+      { staticClass: "list-group list-group-flush" },
+      _vm._l(Object.keys(_vm.categories), function(category, index) {
+        return _c("li", { key: index, staticClass: "list-group-item" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link",
+              on: {
+                click: function($event) {
+                  _vm.toggleSubCategories(index)
+                }
+              }
+            },
+            [
+              _c("i", {
+                staticClass: "fa",
+                class:
+                  _vm.visibleSubCategories.indexOf(index) > -1
+                    ? "fa-chevron-down"
+                    : "fa-chevron-right",
+                attrs: { "aria-hidden": "true" }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#" } }, [
+            _vm._v("\n                " + _vm._s(category) + "\n            ")
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "badge badge-pill badge-success" }, [
+            _vm._v(_vm._s(_vm.categories[category].length))
+          ]),
+          _vm._v(" "),
+          _vm.visibleSubCategories.indexOf(index) > -1
+            ? _c("div", [
+                _c(
+                  "ul",
+                  _vm._l(_vm.categories[category], function(
+                    subCategory,
+                    index
+                  ) {
+                    return _c("li", { key: index, staticClass: "list-item" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _vm._v(_vm._s(subCategory))
+                      ])
+                    ])
+                  })
+                )
+              ])
+            : _vm._e()
+        ])
+      })
+    )
   ])
 }
 var staticRenderFns = []

@@ -24,12 +24,11 @@
         <div id="app">
             <div class="container mt-4">
                 <div class="row">
-                    <div class="col-md-3">
-                        {{-- <sidebar-menu  onclick="handleClick(event)"/> --}}
-                         {{-- :categories="{{ json_encode($categories) }}" --}}
-                         {{ json_encode($categories) }}
+                    <div class="col-md-4">
+                        <sidebar-menu :categories="{{ json_encode($categories) }}" />
+                         {{-- {{ json_encode($categories) }} --}}
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         @yield('content')
                     </div>
                 </div>

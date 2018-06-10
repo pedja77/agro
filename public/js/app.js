@@ -47852,7 +47852,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47913,8 +47913,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         ContentItem: __WEBPACK_IMPORTED_MODULE_0__ContentItem_vue___default.a
     },
-    props: ['items']
-
+    props: ['items'],
+    created: function created() {
+        console.log('Items:', this.items);
+    }
 });
 
 /***/ }),
@@ -48003,7 +48005,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48028,8 +48030,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['item']
-
+    props: ['item'],
+    created: function created() {
+        console.log('item', this.item);
+    }
 });
 
 /***/ }),
@@ -48040,20 +48044,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-sm-12 col-md-4 col-lg-3" }, [
-    _c("div", { staticClass: "card mb-4 box-shadow" }, [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: { src: "http://via.placeholder.com/350", alt: "Card image cap" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.item.name ? _vm.item.name : "some item"))
+  return _c(
+    "div",
+    { staticClass: "col-sm-12 col-md-4 col-lg-3 d-flex row-eq-height" },
+    [
+      _c("div", { staticClass: "card mb-4 box-shadow d-flex-item" }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: {
+            src: "/images/products/" + _vm.item.SIFRA_PROIZVODA + "-01.jpg",
+            alt: "Card image cap"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(_vm._s(_vm.item.ZIS_OZNAKA))
+          ])
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48077,8 +48088,8 @@ var render = function() {
     _c(
       "div",
       { staticClass: "row" },
-      _vm._l(_vm.items, function(item) {
-        return _c("content-item", { attrs: { item: item } })
+      _vm._l(_vm.items, function(item, index) {
+        return _c("content-item", { key: index, attrs: { item: item } })
       })
     )
   ])

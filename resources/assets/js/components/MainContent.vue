@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <content-item v-for="item in items" :item="item" />
+            <content-item v-for="(item, index) in items" :item="item" :key="index" />
         </div>
     </div>
 </template>
@@ -13,7 +13,10 @@ export default {
     components: {
         ContentItem
     },
-    props: ['items']
+    props: ['items'],
+    created() {
+        console.log('Items:', this.items)
+    }
 
 }
 </script>

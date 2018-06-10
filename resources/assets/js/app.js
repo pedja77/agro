@@ -16,7 +16,8 @@ window.Vue = require("vue")
 
 //Vue.component("sidebar-menu", require("./components/SidebarMenu.vue"))
 import SidebarMenu from "./components/SidebarMenu.vue"
-import MainContent from './components/MainContent.vue'
+import MainContent from "./components/MainContent.vue"
+import PriceList from "./components/PriceList.vue"
 
 Vue.mixin({
     methods: {
@@ -28,6 +29,7 @@ const app = new Vue({
     el: "#app",
     components: {
         SidebarMenu,
-        MainContent
+        MainContent,
+        PriceList
     }
 })

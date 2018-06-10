@@ -13,5 +13,6 @@
 
 Route::get('/', 'HomeController@setHome')->name('home');
 Route::get('/catalog', 'CatalogController@setCatalog')->name('catalog');
+Route::get('/catalog/{id}', 'CatalogController@showProduct')->name('show-product');
 Route::get('/sale', 'SaleController@setSale')->name('sale');
 Route::get('/services', 'ServicesController@setServices')->name('services');

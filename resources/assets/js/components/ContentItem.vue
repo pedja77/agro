@@ -1,12 +1,16 @@
 <template>
     <div class="col-sm-12 col-md-4 col-lg-3 d-flex row-eq-height">
+
         <div class="card mb-4 box-shadow d-flex-item">
             <img class="card-img-top" :src="`/images/products/${item.SIFRA_PROIZVODA}-01.jpg`" alt="Card image cap">
             <div class="card-body">
-                <p class="card-text">{{ item.ZIS_OZNAKA }}</p>
+                <a :href="route('show-product', {id: item.SIFRA_PROIZVODA})">
+                    <p class="card-text">{{ item.ZIS_OZNAKA }}</p>
+                </a>
 
             </div>
         </div>
+
     </div>
 </template>
 

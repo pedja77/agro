@@ -48044,10 +48044,7 @@ var render = function() {
     _c("div", { staticClass: "card mb-4 box-shadow" }, [
       _c("img", {
         staticClass: "card-img-top",
-        attrs: {
-          src: "http://via.placeholder.com/350x150",
-          alt: "Card image cap"
-        }
+        attrs: { src: "http://via.placeholder.com/350", alt: "Card image cap" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [

@@ -19,8 +19,9 @@
     </head>
     <body>
 
-            @include('../partials/navbar')
-            @include('../partials/slider')
+        @include('../partials/navbar')
+        @include('../partials/slider')
+
         <div id="app">
             <div class="container mt-4">
                 <div class="row">
@@ -35,12 +36,9 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="../js/app.js"></script>
-        <script>
-            function handleClick(event) {
-                console.log(route('home'))
-            }
+        @include('../partials/footer')
 
-        </script>
+        <script type="text/javascript" src="../js/app.js"></script>
+
     </body>
 </html>

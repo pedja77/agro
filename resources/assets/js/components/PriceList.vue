@@ -1,8 +1,8 @@
 <template>
-    <div id="discounts" class="p-md-4 mb-4">
+    <div id="discounts" class="p-md-4 mb-4 mt-4">
         <div>
             <h4>{{ product.TIP_EN }} {{ product.ZIS_OZNAKA }}</h4>
-            <h5>{{ product.PODTIP_EN }}</h5>
+            <!-- <h5>{{ product.PODTIP_EN }}</h5> -->
         </div>
 
         <table class="table table-sm">

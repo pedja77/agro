@@ -48104,7 +48104,7 @@ var render = function() {
         _c("img", {
           staticClass: "card-img-top",
           attrs: {
-            src: "/images/products/" + _vm.item.SIFRA_PROIZVODA + "-01.jpg",
+            src: "images/products/" + _vm.item.SIFRA_PROIZVODA + "-01.jpg",
             alt: "Card image cap"
           }
         }),
@@ -48383,103 +48383,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "p-md-4 mb-4", attrs: { id: "discounts" } }, [
-    _c("div", [
-      _c("h4", [
-        _vm._v(
-          _vm._s(_vm.product.TIP_EN) + " " + _vm._s(_vm.product.ZIS_OZNAKA)
+  return _c(
+    "div",
+    { staticClass: "p-md-4 mb-4 mt-4", attrs: { id: "discounts" } },
+    [
+      _c("div", [
+        _c("h4", [
+          _vm._v(
+            _vm._s(_vm.product.TIP_EN) + " " + _vm._s(_vm.product.ZIS_OZNAKA)
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-sm" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.discounts, function(discountItem, index) {
+            return _c("tr", { key: index }, [
+              _c("td", [_vm._v(_vm._s(discountItem.qty))]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  _vm._s(
+                    (
+                      _vm.product.CENA_EURO -
+                      _vm.product.CENA_EURO *
+                        parseFloat("0." + discountItem.rate)
+                    ).toFixed(2)
+                  )
+                )
+              ])
+            ])
+          })
         )
       ]),
       _vm._v(" "),
-      _c("h5", [_vm._v(_vm._s(_vm.product.PODTIP_EN))])
-    ]),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-sm" }, [
-      _vm._m(0),
+      _vm._m(1),
       _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.discounts, function(discountItem, index) {
-          return _c("tr", { key: index }, [
-            _c("td", [_vm._v(_vm._s(discountItem.qty))]),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", [
+        _c("form", [
+          _c("div", { staticClass: "d-flex justify-content-around" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.quantity,
+                  expression: "quantity"
+                }
+              ],
+              staticClass: "form-control mx-sm-2 d-flex-item",
+              attrs: { type: "number", id: "qty", min: "0" },
+              domProps: { value: _vm.quantity },
+              on: {
+                input: [
+                  function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.quantity = $event.target.value
+                  },
+                  _vm.calculatePrices
+                ]
+              }
+            }),
             _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                _vm._s(
-                  (
-                    _vm.product.CENA_EURO -
-                    _vm.product.CENA_EURO * parseFloat("0." + discountItem.rate)
-                  ).toFixed(2)
-                )
-              )
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-success mx-sm-2 d-flex-item",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("Add to cart")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm.hasQty
+        ? _c("div", [
+            _c("p", { staticClass: "text-right" }, [
+              _vm._v("Price: " + _vm._s(_vm.itemPrice) + " €")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-right" }, [
+              _vm._v("VAT: " + _vm._s(_vm.vat) + " €")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-right" }, [
+              _vm._v("Your price: " + _vm._s(_vm.total) + " €")
             ])
           ])
-        })
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c("div", [
-      _c("form", [
-        _c("div", { staticClass: "d-flex justify-content-around" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.quantity,
-                expression: "quantity"
-              }
-            ],
-            staticClass: "form-control mx-sm-2 d-flex-item",
-            attrs: { type: "number", id: "qty", min: "0" },
-            domProps: { value: _vm.quantity },
-            on: {
-              input: [
-                function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.quantity = $event.target.value
-                },
-                _vm.calculatePrices
-              ]
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-success mx-sm-2 d-flex-item",
-              attrs: { type: "submit" }
-            },
-            [_vm._v("Add to cart")]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _vm.hasQty
-      ? _c("div", [
-          _c("p", { staticClass: "text-right" }, [
-            _vm._v("Price: " + _vm._s(_vm.itemPrice) + " €")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-right" }, [
-            _vm._v("VAT: " + _vm._s(_vm.vat) + " €")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-right" }, [
-            _vm._v("Your price: " + _vm._s(_vm.total) + " €")
-          ])
-        ])
-      : _vm._e()
-  ])
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = [
   function() {

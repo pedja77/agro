@@ -1,6 +1,8 @@
 @extends('./layouts/master')
 
-
+@section('slider')
+    @include('./partials/slider')
+@endsection
 
 @section('content')
     <div>

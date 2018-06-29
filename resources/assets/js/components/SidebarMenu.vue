@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="mt-5 pt-5">
 
         <h4>Categories</h4>
 

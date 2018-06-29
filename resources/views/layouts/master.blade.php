@@ -20,11 +20,11 @@
     <body>
 
         @include('../partials/navbar')
-        @include('../partials/slider')
+        @yield('slider')
 
         <div id="app">
-            <div class="container mt-4">
-                <div class="row">
+            <div class="container mt-5 pt-5">
+                <div class="row mt-4">
                     <div class="col-md-3">
                         <sidebar-menu :categories="{{ json_encode($categories) }}" />
                          {{-- {{ json_encode($categories) }} --}}

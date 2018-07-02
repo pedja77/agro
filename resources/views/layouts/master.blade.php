@@ -26,8 +26,14 @@
             <div class="container mt-5 pt-5">
                 <div class="row mt-4">
                     <div class="col-md-3">
-                        <sidebar-menu :categories="{{ json_encode($categories) }}" />
-                         {{-- {{ json_encode($categories) }} --}}
+                        <div class="row">
+                            <filters />
+                        </div>
+                        <div class="row">
+                            <sidebar-menu :categories="{{ json_encode($categories) }}" />
+                            {{-- {{ json_encode($categories) }} --}}
+                        </div>
+
                     </div>
                     <div class="col-md-9">
                         @yield('content')

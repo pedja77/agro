@@ -15,7 +15,7 @@ export default {
     },
     props: ['items'],
     created() {
-        console.log('Items:', this.items)
+        //console.log('Items:', this.items)
     }
 
 }

@@ -12,7 +12,7 @@
                 <a href="#">
                     {{ category }}
                 </a>
-                <span class="badge badge-pill badge-success">{{ categories[category].length }}</span>
+                <!-- <span class="badge badge-pill badge-success">{{ categories[category].length }}</span> -->
                 <div v-if="visibleSubCategories.indexOf(index) > -1">
                     <ul>
                         <li class="list-item" v-for="(subCategory, index) in categories[category]" :key="index">
@@ -45,6 +45,9 @@
                 }
             }
         },
+        created() {
+            console.log('Kategorije ', this.categories)
+        }
     }
 </script>
 

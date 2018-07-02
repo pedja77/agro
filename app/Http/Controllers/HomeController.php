@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     private function getNewProducts() {
 
-        $newProducts = Product::where('novi_proizvod', '!=', '')->take(12)->get();
+        $newProducts = Product::where('novi_proizvod', '!=', '')->orderBy('SIFRA_PROIZVODA', 'desc')->get(); //take(12)->get();
         return $newProducts;
     }
 
@@ -24,6 +24,9 @@ class HomeController extends Controller
 
         $categories = $this->getCategories();
         $newProducts = $this->getNewProducts();
+
+        //dd($categories);
+
 
         return view('home', compact(['categories', 'newProducts']));
     }

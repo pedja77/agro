@@ -18,7 +18,7 @@
 export default {
     props: ['item'],
     created() {
-        console.log('item', this.item)
+        console.log('Product image: ', `images/products/${this.item.SIFRA_PROIZVODA}-01.jpg` ? true : false)
     }
 }
 </script>

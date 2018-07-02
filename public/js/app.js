@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(68);
 
 
 /***/ }),
@@ -14301,6 +14301,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_MainContent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_MainContent_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PriceList_vue__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PriceList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_PriceList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Filters_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Filters_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Filters_vue__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -14322,6 +14324,7 @@ window.Vue = __webpack_require__(39);
 
 
 
+
 Vue.mixin({
     methods: {
         route: route
@@ -14333,7 +14336,8 @@ var app = new Vue({
     components: {
         SidebarMenu: __WEBPACK_IMPORTED_MODULE_0__components_SidebarMenu_vue___default.a,
         MainContent: __WEBPACK_IMPORTED_MODULE_1__components_MainContent_vue___default.a,
-        PriceList: __WEBPACK_IMPORTED_MODULE_2__components_PriceList_vue___default.a
+        PriceList: __WEBPACK_IMPORTED_MODULE_2__components_PriceList_vue___default.a,
+        Filters: __WEBPACK_IMPORTED_MODULE_3__components_Filters_vue___default.a
     }
 });
 
@@ -47766,6 +47770,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.visibleSubCategories.push(index);
             }
         }
+    },
+    created: function created() {
+        console.log('Kategorije ', this.categories);
     }
 });
 
@@ -47809,10 +47816,6 @@ var render = function() {
           _vm._v(" "),
           _c("a", { attrs: { href: "#" } }, [
             _vm._v("\n                " + _vm._s(category) + "\n            ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "badge badge-pill badge-success" }, [
-            _vm._v(_vm._s(_vm.categories[category].length))
           ]),
           _vm._v(" "),
           _vm.visibleSubCategories.indexOf(index) > -1
@@ -47963,7 +47966,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     props: ['items'],
     created: function created() {
-        console.log('Items:', this.items);
+        //console.log('Items:', this.items)
     }
 });
 
@@ -48084,7 +48087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['item'],
     created: function created() {
-        console.log('item', this.item);
+        console.log('Product image: ',  true ? true : false);
     }
 });
 
@@ -48517,6 +48520,512 @@ if (false) {
 
 /***/ }),
 /* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(64)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Filters.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0d464a94", Component.options)
+  } else {
+    hotAPI.reload("data-v-0d464a94", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(65);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("5d0bfe96", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d464a94\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Filters.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d464a94\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Filters.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nform {\n  margin: 0 auto !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    params: ['selectOptions'],
+    data: function data() {
+        return {
+            queryParams: {
+                bore: '',
+                group: '',
+                type: '',
+                innerDiameter: '',
+                outerDiameter: '',
+                length: ''
+            }
+        };
+    },
+
+    methods: {
+        handleInput: function handleInput(event) {
+            console.log('input', event.target.value);
+            console.log('param', this.queryParams);
+            sessionStorage.setItem('queryParams', JSON.stringify(this.queryParams));
+        }
+    }
+
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h4", [_vm._v("Filter Products")]),
+    _vm._v(" "),
+    _c("form", [
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          { staticClass: "col-5 col-form-label", attrs: { for: "bore" } },
+          [_vm._v("Bore shape")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.queryParams.bore,
+                  expression: "queryParams.bore"
+                }
+              ],
+              staticClass: "custom-select",
+              attrs: { id: "bore", name: "bore" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.queryParams,
+                      "bore",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.handleInput
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "round" } }, [_vm._v("Round")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "square" } }, [_vm._v("Square")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "hexagonal" } }, [
+                _vm._v("Hexagonal")
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          { staticClass: "col-5 col-form-label", attrs: { for: "type" } },
+          [_vm._v("Type")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.queryParams.type,
+                  expression: "queryParams.type"
+                }
+              ],
+              staticClass: "custom-select",
+              attrs: { id: "type", name: "type" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.queryParams,
+                      "type",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.handleInput
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "duck" } }, [_vm._v("Duck")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "fish" } }, [_vm._v("Fish")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          { staticClass: "col-5 col-form-label", attrs: { for: "group" } },
+          [_vm._v("Group:")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.queryParams.group,
+                  expression: "queryParams.group"
+                }
+              ],
+              staticClass: "custom-select",
+              attrs: { id: "group", name: "group" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.queryParams,
+                      "group",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.handleInput
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "duck" } }, [_vm._v("Duck")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "fish" } }, [_vm._v("Fish")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          { staticClass: "col-5 col-form-label", attrs: { for: "d" } },
+          [_vm._v("Inner diameter:")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.queryParams.innerDiameter,
+                expression: "queryParams.innerDiameter"
+              }
+            ],
+            staticClass: "form-control here",
+            attrs: {
+              id: "d",
+              name: "d",
+              placeholder: "Inner diameter",
+              type: "number",
+              step: "0.01",
+              min: "0"
+            },
+            domProps: { value: _vm.queryParams.innerDiameter },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.queryParams,
+                    "innerDiameter",
+                    $event.target.value
+                  )
+                },
+                _vm.handleInput
+              ]
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          { staticClass: "col-5 col-form-label", attrs: { for: "D" } },
+          [_vm._v("Outer diameter:")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.queryParams.outerDiameter,
+                expression: "queryParams.outerDiameter"
+              }
+            ],
+            staticClass: "form-control here",
+            attrs: {
+              id: "D",
+              name: "D",
+              placeholder: "Outer diameter",
+              type: "number",
+              step: "0.01",
+              min: "0"
+            },
+            domProps: { value: _vm.queryParams.outerDiameter },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.queryParams,
+                    "outerDiameter",
+                    $event.target.value
+                  )
+                },
+                _vm.handleInput
+              ]
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          { staticClass: "col-5 col-form-label", attrs: { for: "length" } },
+          [_vm._v("Length:")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.queryParams.length,
+                expression: "queryParams.length"
+              }
+            ],
+            staticClass: "form-control here",
+            attrs: {
+              id: "length",
+              name: "length",
+              placeholder: "Length",
+              type: "number",
+              step: "0.01",
+              min: "0"
+            },
+            domProps: { value: _vm.queryParams.length },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.queryParams, "length", $event.target.value)
+                },
+                _vm.handleInput
+              ]
+            }
+          })
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0d464a94", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

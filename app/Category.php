@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-//     protected $table='kategorije';
-//    // protected $primaryKey = 'ID';
-//     public $timestamps = false;
+    protected $table='kategorije';
+    protected $primaryKey = 'ID';
+    public $timestamps = false;
 
     private static $categories = [
         'Ball bearing' => [
@@ -41,5 +41,15 @@ class Category extends Model
 
     public static function getCategories() {
         return self::$categories;
+
+        // $categories = Category::where('FATHER', '')
+        //                     ->where('BASE', 'TIP')
+        //                     ->where('FILE','!=', 'NULL')
+        //                     ->where('FILE','!=', '')
+        //                     ->where('NAME', 'NOT LIKE', '%i')
+        //                     ->orderBy('MENY_ORDER', 'asc')
+        //                     ->get();
+
+        // return compact('categories');
     }
 }

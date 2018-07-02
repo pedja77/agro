@@ -19,8 +19,17 @@ class CategoryController extends Controller
     //   // $categories = $categories->map
     //     //dd($categories);
 
-        $categories = Category::getCategories();
+        //$categories = Category::getCategories();
         //dd($categories);
-        return view('categories', compact('categories'));
+
+        $categories = Category::where('FATHER', '')
+                            ->where('BASE', 'TIP')
+                            ->where('FILE','IS NOT', 'NULL')
+                            ->where('FILE','!=', '')
+                            ->where('NAME', 'NOT LIKE', '%i')
+                            ->orderBy('MENY_ORDER', 'asc')
+                            ->get();
+
+        return compact('categories'); //view('categories', compact('categories'));
     }
 }

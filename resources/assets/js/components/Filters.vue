@@ -18,8 +18,7 @@
                 <div class="col-7">
                     <select id="type" name="type" class="custom-select" v-model="queryParams.type" @change="handleInput">
                         <option value="">All</option>
-                        <option value="duck">Duck</option>
-                        <option value="fish">Fish</option>
+                        <option v-for="(type, index) in types" :key="index" :value="type">{{ type }}</option>
                     </select>
                 </div>
             </div>
@@ -28,8 +27,7 @@
                 <div class="col-7">
                     <select id="group" name="group" class="custom-select" v-model="queryParams.group" @change="handleInput">
                         <option value="">All</option>
-                        <option value="duck">Duck</option>
-                        <option value="fish">Fish</option>
+                        <option v-for="(group, index) in groups" :key="index" :value="group">{{ group }}</option>
                     </select>
                 </div>
             </div>
@@ -58,11 +56,11 @@
                     <input id="length" :disabled="!isRoundBore" name="length" placeholder="Length" type="number" class="form-control here" step="0.01" min="0" v-model="queryParams.length" @input="handleInput">
                 </div>
             </div>
-            <!-- <div class="form-group row">
-            <div class="offset-4 col-8">
-                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group row">
+                <div class="offset-4 col-8">
+                    <button name="reset" type="reset" class="btn btn-primary" @click="resetForm">Reset</button>
+                </div>
             </div>
-        </div> -->
         </form>
         <a :href="route('catalog')" id="catalog-link"></a>
     </div>
@@ -82,30 +80,69 @@ export default {
                 innerDiameter: '',
                 outerDiameter: '',
                 length: ''
-            }
+            },
+            types: [],
+            groups: []
         }
     },
     methods: {
         handleInput(event) {
             console.log('input', event.target.value)
             console.log('param', this.queryParams)
-            sessionStorage.setItem('queryParams', JSON.stringify(this.queryParams))
+
             if (route().current() == 'home') {
+                /*
+                * If the current page is home, persist form in session storage and go to catalog page
+                */
                 console.log('We are at home.')
+                sessionStorage.setItem('queryParams', JSON.stringify(this.queryParams))
                 document.querySelector('#catalog-link').click()
             }
-            FilterService.getFilteredProducts(this.queryParams)
-                .then(response => {
-                    console.log(response)
-                })
+
+            this.$emit('filter-input', this.queryParams)
+            // FilterService.getFilteredProducts(this.queryParams)
+            //     .then(response => {
+            //         console.log(response)
+            //     })
 
             //console.log('tip', typeof FilterService.getFilteredProducts)
+        },
+        resetForm() {
+            this.queryParams = {
+                bore: '',
+                group: '',
+                type: '',
+                innerDiameter: '',
+                outerDiameter: '',
+                length: ''
+            }
         }
     },
     computed: {
         isRoundBore() {
             return this.queryParams.bore === 'round' || this.queryParams.bore === ''
         }
+    },
+    created() {
+        if (sessionStorage.getItem('queryParams')) {
+            /*
+            * If queryParams exists in session storage, restore the state of the filters and fire up event to request
+            * new data from server
+            */
+            this.queryParams = JSON.parse(sessionStorage.getItem('queryParams'))
+            sessionStorage.removeItem('queryParams')
+        }
+
+        FilterService.getTypes()
+            .then(response => {
+                this.types = response.data.types
+            })
+
+        FilterService.getGroups()
+            .then(response => {
+                this.groups = response.data.groups
+            })
+
     }
 
 }

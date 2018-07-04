@@ -19,6 +19,7 @@ import SidebarMenu from "./components/SidebarMenu.vue"
 import MainContent from "./components/MainContent.vue"
 import PriceList from "./components/PriceList.vue"
 import Filters from "./components/Filters.vue"
+import HomeCatalogBody from "./components/HomeCatalogBody.vue"
 
 Vue.mixin({
     methods: {
@@ -32,6 +33,7 @@ const app = new Vue({
         SidebarMenu,
         MainContent,
         PriceList,
-        Filters
+        Filters,
+        HomeCatalogBody
     }
 })

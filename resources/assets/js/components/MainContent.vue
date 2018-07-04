@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div class="row">
-            <content-item v-for="(item, index) in items" :item="item" :key="index" />
+        <div class="row" id="row">
+            <content-item v-for="(item, index) in items.data" :item="item" :key="index" />
         </div>
     </div>
 </template>
@@ -15,11 +15,14 @@ export default {
     },
     props: ['items'],
     created() {
-        //console.log('Items:', this.items)
+        console.log('Items:', this.items)
     }
 
 }
 </script>
 
 <style>
+#row {
+  margin-top: 300px;
+}
 </style>

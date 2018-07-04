@@ -11,6 +11,14 @@ export default class FilterService {
         return this.client.get("/catalog", { params })
     }
 
+    getTypes() {
+        return this.client.get("/catalog/types")
+    }
+
+    getGroups() {
+        return this.client.get("/catalog/groups")
+    }
+
     // getAllGalleries(params) {
     //     return this.client.get("/galleries", { params })
     // }

@@ -7,6 +7,6 @@
 @section('content')
     <div>
     {{-- {{ $newProducts }} --}}
-    <main-content :items="{{ json_encode($newProducts) }}"/>
+    <home-catalog-body :items="{{ json_encode($newProducts) }}" :categories="{{ json_encode($categories) }}"/>
     </div>
 @endsection

@@ -22,14 +22,19 @@ class CategoryController extends Controller
         //$categories = Category::getCategories();
         //dd($categories);
 
-        $categories = Category::where('FATHER', '')
+         $categories = Category::where('BASE', 'TIP')
+                            ->distinct('MENY_ORDER')
                             ->where('BASE', 'TIP')
-                            ->where('FILE','IS NOT', 'NULL')
+                            ->where('FILE','!=', 'NULL')
                             ->where('FILE','!=', '')
-                            ->where('NAME', 'NOT LIKE', '%i')
-                            ->orderBy('MENY_ORDER', 'asc')
+                            ->where('FATHER', '')
+                            ->orderByRaw('MENY_ORDER * 1 ASC')
                             ->get();
-
-        return compact('categories'); //view('categories', compact('categories'));
+        //dd($categories[0]);
+        $categories = $categories->map(function($item, $key) {
+            $item["NAME"] = mb_convert_encoding($item['NAME'],'CP1252','UTF-8');
+            return $item;
+        });
+        return response()->json(compact('categories')); //view('categories', compact('categories'));
     }
 }

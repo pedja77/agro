@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(8);
+var bind = __webpack_require__(9);
 var isBuffer = __webpack_require__(22);
 
 /*global toString:true*/
@@ -843,10 +843,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(10);
+    adapter = __webpack_require__(11);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(10);
+    adapter = __webpack_require__(11);
   }
   return adapter;
 }
@@ -921,7 +921,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 6 */
@@ -13827,6 +13827,12 @@ return jQuery;
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(21);
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -13842,7 +13848,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -14032,7 +14038,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14043,7 +14049,7 @@ var settle = __webpack_require__(25);
 var buildURL = __webpack_require__(27);
 var parseHeaders = __webpack_require__(28);
 var isURLSameOrigin = __webpack_require__(29);
-var createError = __webpack_require__(11);
+var createError = __webpack_require__(12);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(30);
 
 module.exports = function xhrAdapter(config) {
@@ -14219,7 +14225,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14244,7 +14250,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14256,7 +14262,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14282,15 +14288,15 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(15);
-module.exports = __webpack_require__(68);
+__webpack_require__(16);
+module.exports = __webpack_require__(69);
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14309,7 +14315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(16);
+__webpack_require__(17);
 
 window.Vue = __webpack_require__(39);
 
@@ -14342,11 +14348,11 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(17);
+window._ = __webpack_require__(18);
 window.Popper = __webpack_require__(6).default;
 
 /**
@@ -14358,7 +14364,7 @@ window.Popper = __webpack_require__(6).default;
 try {
   window.$ = window.jQuery = __webpack_require__(7);
 
-  __webpack_require__(19);
+  __webpack_require__(20);
 } catch (e) {}
 
 /**
@@ -14367,7 +14373,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(20);
+window.axios = __webpack_require__(8);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14403,7 +14409,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31513,10 +31519,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(19)(module)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31544,7 +31550,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35477,12 +35483,6 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(21);
-
-/***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35490,7 +35490,7 @@ module.exports = __webpack_require__(21);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(8);
+var bind = __webpack_require__(9);
 var Axios = __webpack_require__(23);
 var defaults = __webpack_require__(5);
 
@@ -35525,9 +35525,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(13);
+axios.Cancel = __webpack_require__(14);
 axios.CancelToken = __webpack_require__(37);
-axios.isCancel = __webpack_require__(12);
+axios.isCancel = __webpack_require__(13);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -35680,7 +35680,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(11);
+var createError = __webpack_require__(12);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -36113,7 +36113,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(34);
-var isCancel = __webpack_require__(12);
+var isCancel = __webpack_require__(13);
 var defaults = __webpack_require__(5);
 var isAbsoluteURL = __webpack_require__(35);
 var combineURLs = __webpack_require__(36);
@@ -36273,7 +36273,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(13);
+var Cancel = __webpack_require__(14);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -47591,7 +47591,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(10)))
 
 /***/ }),
 /* 42 */
@@ -48531,7 +48531,7 @@ var normalizeComponent = __webpack_require__(4)
 /* script */
 var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(67)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48615,6 +48615,7 @@ exports.push([module.i, "\nform {\n  margin: 0 auto !important;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__ = __webpack_require__(67);
 //
 //
 //
@@ -48677,6 +48678,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     params: ['selectOptions'],
@@ -48698,6 +48709,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log('input', event.target.value);
             console.log('param', this.queryParams);
             sessionStorage.setItem('queryParams', JSON.stringify(this.queryParams));
+            if (route().current() == 'home') {
+                console.log('We are at home.');
+                document.querySelector('#catalog-link').click();
+            }
+            __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getFilteredProducts(this.queryParams).then(function (response) {
+                console.log(response);
+            });
+
+            //console.log('tip', typeof FilterService.getFilteredProducts)
+        }
+    },
+    computed: {
+        isRoundBore: function isRoundBore() {
+            return this.queryParams.bore === 'round' || this.queryParams.bore === '';
         }
     }
 
@@ -48705,6 +48730,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return filterService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var FilterService = function () {
+    function FilterService() {
+        _classCallCheck(this, FilterService);
+
+        this.client = new __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
+            baseURL: "http://localhost:8000/api/"
+        });
+    }
+
+    _createClass(FilterService, [{
+        key: "getFilteredProducts",
+        value: function getFilteredProducts(params) {
+            return this.client.get("/catalog", { params: params });
+        }
+
+        // getAllGalleries(params) {
+        //     return this.client.get("/galleries", { params })
+        // }
+
+    }]);
+
+    return FilterService;
+}();
+
+/* unused harmony default export */ var _unused_webpack_default_export = (FilterService);
+
+
+var filterService = new FilterService();
+
+
+
+/***/ }),
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48764,9 +48834,7 @@ var render = function() {
               _vm._v(" "),
               _c("option", { attrs: { value: "square" } }, [_vm._v("Square")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "hexagonal" } }, [
-                _vm._v("Hexagonal")
-              ])
+              _c("option", { attrs: { value: "hex" } }, [_vm._v("Hexagonal")])
             ]
           )
         ])
@@ -48885,43 +48953,90 @@ var render = function() {
           [_vm._v("Inner diameter:")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-7" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.queryParams.innerDiameter,
-                expression: "queryParams.innerDiameter"
-              }
-            ],
-            staticClass: "form-control here",
-            attrs: {
-              id: "d",
-              name: "d",
-              placeholder: "Inner diameter",
-              type: "number",
-              step: "0.01",
-              min: "0"
-            },
-            domProps: { value: _vm.queryParams.innerDiameter },
-            on: {
-              input: [
-                function($event) {
-                  if ($event.target.composing) {
-                    return
+        _vm.isRoundBore
+          ? _c("div", { staticClass: "col-7" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.queryParams.innerDiameter,
+                    expression: "queryParams.innerDiameter"
                   }
-                  _vm.$set(
-                    _vm.queryParams,
-                    "innerDiameter",
-                    $event.target.value
-                  )
+                ],
+                staticClass: "form-control here",
+                attrs: {
+                  id: "d",
+                  name: "d",
+                  placeholder: "Inner diameter",
+                  type: "number",
+                  step: "0.01",
+                  min: "0"
                 },
-                _vm.handleInput
-              ]
-            }
-          })
-        ])
+                domProps: { value: _vm.queryParams.innerDiameter },
+                on: {
+                  input: [
+                    function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.queryParams,
+                        "innerDiameter",
+                        $event.target.value
+                      )
+                    },
+                    _vm.handleInput
+                  ]
+                }
+              })
+            ])
+          : _c("div", { staticClass: "col-7" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.queryParams.innerDiameter,
+                      expression: "queryParams.innerDiameter"
+                    }
+                  ],
+                  staticClass: "custom-select",
+                  attrs: { id: "d", name: "d" },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.queryParams,
+                          "innerDiameter",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      _vm.handleInput
+                    ]
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "duck" } }, [_vm._v("Duck")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "fish" } }, [_vm._v("Fish")])
+                ]
+              )
+            ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group row" }, [
@@ -48944,6 +49059,7 @@ var render = function() {
             staticClass: "form-control here",
             attrs: {
               id: "D",
+              disabled: !_vm.isRoundBore,
               name: "D",
               placeholder: "Outer diameter",
               type: "number",
@@ -48990,6 +49106,7 @@ var render = function() {
             staticClass: "form-control here",
             attrs: {
               id: "length",
+              disabled: !_vm.isRoundBore,
               name: "length",
               placeholder: "Length",
               type: "number",
@@ -49011,7 +49128,9 @@ var render = function() {
           })
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c("a", { attrs: { href: _vm.route("catalog"), id: "catalog-link" } })
   ])
 }
 var staticRenderFns = []
@@ -49025,7 +49144,7 @@ if (false) {
 }
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

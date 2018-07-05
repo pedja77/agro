@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style>
-#row {
+/* #row {
   margin-top: 300px;
-}
+} */
 </style>

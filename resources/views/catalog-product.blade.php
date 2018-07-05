@@ -1,7 +1,7 @@
 @extends('./layouts/master')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container mt-5 pt-5">
         <h2>{{ $product->TIP_EN }} {{ $product->ZIS_OZNAKA }}</h2>
         <h3>{{ $product->PODTIP_EN }}</h3>
         <div class="row mb-4 pb-4">

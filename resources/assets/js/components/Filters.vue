@@ -116,6 +116,7 @@ export default {
                 outerDiameter: '',
                 length: ''
             }
+            this.$emit('filter-input', this.queryParams)
         }
     },
     computed: {
@@ -131,6 +132,7 @@ export default {
             */
             this.queryParams = JSON.parse(sessionStorage.getItem('queryParams'))
             sessionStorage.removeItem('queryParams')
+            this.$emit('filter-input', this.queryParams)
         }
 
         FilterService.getTypes()

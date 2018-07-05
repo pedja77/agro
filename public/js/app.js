@@ -48794,6 +48794,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 outerDiameter: '',
                 length: ''
             };
+            this.$emit('filter-input', this.queryParams);
         }
     },
     computed: {
@@ -48811,6 +48812,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             */
             this.queryParams = JSON.parse(sessionStorage.getItem('queryParams'));
             sessionStorage.removeItem('queryParams');
+            this.$emit('filter-input', this.queryParams);
         }
 
         __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getTypes().then(function (response) {

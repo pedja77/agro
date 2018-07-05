@@ -25,14 +25,18 @@ class ProductsController extends Controller
                                 ->where('podtip_en', 'NOT LIKE', "%hex%")
                                 ->where('tip_en', 'like', '%'.$type.'%')
                                 ->where('grupa_en', 'like', '%'.$group.'%')
-                                ->where('D', 'like', '%'.$innerDiameter.'%')
+                                ->where('D_', 'like', '%'.$innerDiameter.'%')
+                                ->where('D', 'like', '%'.$outerDiameter.'%')
+                                ->where('B', 'like', '%'.$length.'%')
                                 ->paginate(20);
 
         } else {
             $products = Product::where('podtip_en', 'like', '%'.$bore.'%')
                                 ->where('tip_en', 'like', '%'.$type.'%')
                                 ->where('grupa_en', 'like', '%'.$group.'%')
-                                ->where('D', 'like', "%$innerDiameter%")
+                                ->where('D_', 'like', "%$innerDiameter%")
+                                ->where('D', 'like', '%'.$outerDiameter.'%')
+                                ->where('B', 'like', '%'.$length.'%')
                                 ->paginate(20);
         }
 

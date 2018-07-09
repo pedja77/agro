@@ -22,7 +22,7 @@
         @include('../partials/navbar')
         @yield('slider')
 
-        <div id="app">
+        <div id="app" class="mb-5">
             {{-- <div class="container mt-5 pt-5">
                 <div class="row mt-4">
                     <div class="col-md-3">

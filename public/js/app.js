@@ -14478,6 +14478,11 @@ var FilterService = function () {
         value: function getGroups() {
             return this.client.get("/catalog/groups");
         }
+    }, {
+        key: "getBoreDiameters",
+        value: function getBoreDiameters() {
+            return this.client.get("/bore-diameters");
+        }
 
         // getAllGalleries(params) {
         //     return this.client.get("/galleries", { params })
@@ -48742,7 +48747,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -48758,8 +48762,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 outerDiameter: '',
                 length: ''
             },
-            types: [],
-            groups: []
+            productTypes: [],
+            productGroups: [],
+            boreDiameters: {}
         };
     },
 
@@ -48815,13 +48820,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('filter-input', this.queryParams);
         }
 
-        __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getTypes().then(function (response) {
-            _this.types = response.data.types;
-        });
+        if (sessionStorage.getItem('productTypes')) {
+            this.productTypes = JSON.parse(sessionStorage.getItem('productTypes'));
+        } else {
+            __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getTypes().then(function (response) {
+                _this.productTypes = response.data.types;
+                sessionStorage.setItem('productTypes', JSON.stringify(_this.productTypes));
+            });
+        }
 
-        __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getGroups().then(function (response) {
-            _this.groups = response.data.groups;
-        });
+        if (sessionStorage.getItem('productGroups')) {
+            this.productGroups = JSON.parse(sessionStorage.getItem('productGroups'));
+        } else {
+            __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getGroups().then(function (response) {
+                _this.productGroups = response.data.groups;
+                sessionStorage.setItem('productGroups', JSON.stringify(_this.productGroups));
+            });
+        }
+
+        if (sessionStorage.getItem('boreDiameters')) {
+            this.boreDiameters = JSON.parse(sessionStorage.getItem('boreDiameters'));
+        } else {
+            __WEBPACK_IMPORTED_MODULE_0__services_FilterService_js__["a" /* FilterService */].getBoreDiameters().then(function (response) {
+                //console.log(response)
+                _this.boreDiameters = response.data;
+                sessionStorage.setItem('boreDiameters', JSON.stringify(_this.boreDiameters));
+            });
+        }
     }
 });
 
@@ -48937,7 +48962,7 @@ var render = function() {
             [
               _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
               _vm._v(" "),
-              _vm._l(_vm.types, function(type, index) {
+              _vm._l(_vm.productTypes, function(type, index) {
                 return _c("option", { key: index, domProps: { value: type } }, [
                   _vm._v(_vm._s(type))
                 ])
@@ -48993,7 +49018,7 @@ var render = function() {
             [
               _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
               _vm._v(" "),
-              _vm._l(_vm.groups, function(group, index) {
+              _vm._l(_vm.productGroups, function(group, index) {
                 return _c(
                   "option",
                   { key: index, domProps: { value: group } },
@@ -49091,10 +49116,20 @@ var render = function() {
                 [
                   _c("option", { attrs: { value: "" } }, [_vm._v("All")]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "duck" } }, [_vm._v("Duck")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "fish" } }, [_vm._v("Fish")])
-                ]
+                  _vm._l(
+                    _vm.queryParams.bore == "hex"
+                      ? _vm.boreDiameters.hex
+                      : _vm.boreDiameters.square,
+                    function(diameter, key) {
+                      return _c(
+                        "option",
+                        { key: key, domProps: { value: diameter } },
+                        [_vm._v(_vm._s(diameter))]
+                      )
+                    }
+                  )
+                ],
+                2
               )
             ])
       ]),
@@ -49190,11 +49225,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group row" }, [
-        _c("div", { staticClass: "offset-4 col-8" }, [
+        _c("div", { staticClass: " col-8" }, [
           _c(
             "button",
             {
-              staticClass: "btn btn-primary",
+              staticClass: "btn btn-outline-success mx-sm-2 d-flex-item",
               attrs: { name: "reset", type: "reset" },
               on: { click: _vm.resetForm }
             },

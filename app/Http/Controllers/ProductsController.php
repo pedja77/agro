@@ -30,7 +30,7 @@ class ProductsController extends Controller
                                 ->where('B', 'like', '%'.$length.'%')
                                 ->paginate(20);
 
-        } else {
+        } else { // videti po kojoj se koloni kada  filtrira
             $products = Product::where('podtip_en', 'like', '%'.$bore.'%')
                                 ->where('tip_en', 'like', '%'.$type.'%')
                                 ->where('grupa_en', 'like', '%'.$group.'%')
@@ -76,5 +76,41 @@ class ProductsController extends Controller
         });
 
         return response()->json(compact('groups'));
+    }
+
+//     $query = "SELECT DISTINCT A_ FROM roba WHERE PODTIP_SR LIKE '%Äetvrtasti%' ORDER BY (A_*1)" ; // square
+// $query = "SELECT DISTINCT A_ FROM roba WHERE PODTIP_EN LIKE '%hex%' ORDER BY (A_*1)" ; // hexagonal
+// $query = "SELECT DISTINCT A_ FROM roba WHERE NOT(PODTIP_SR LIKE '%Äetvrtasti%') AND NOT(PODTIP_EN LIKE '%hex%') ORDER BY (A_*1)" ; // round
+
+    public function getBoreDiameters() {
+
+        $square = Product::select('A_')
+                        ->distinct()
+                        ->where('podtip_en', 'like','%square%')
+                        ->orderBy('A_')
+                        ->get()
+                        ->map(function($item) {
+                            return $item['A_'];
+                        });
+
+        $hex = Product::select('A_')
+                        ->distinct()
+                        ->where('podtip_en', 'like','%hex%')
+                        ->orderBy('A_')
+                        ->get()
+                        ->map(function($item, $index) {
+                            return $item['A_'];
+                        });
+
+
+        \Log::info('bores', [$square, $hex]);
+        // $round = Product::select('A_')
+        //                 ->distinct()
+        //                 ->where('podtip_en', 'not like','%hex%')
+        //                 ->where('podtip_en', 'not like','%square%')
+        //                 ->orderBy('A_')
+        //                 ->get();
+
+        return response()->json(compact(['square', 'hex']));
     }
 }

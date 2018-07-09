@@ -18,7 +18,7 @@
                 <div class="col-7">
                     <select id="type" name="type" class="custom-select" v-model="queryParams.type" @change="handleInput">
                         <option value="">All</option>
-                        <option v-for="(type, index) in types" :key="index" :value="type">{{ type }}</option>
+                        <option v-for="(type, index) in productTypes" :key="index" :value="type">{{ type }}</option>
                     </select>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="col-7">
                     <select id="group" name="group" class="custom-select" v-model="queryParams.group" @change="handleInput">
                         <option value="">All</option>
-                        <option v-for="(group, index) in groups" :key="index" :value="group">{{ group }}</option>
+                        <option v-for="(group, index) in productGroups" :key="index" :value="group">{{ group }}</option>
                     </select>
                 </div>
             </div>
@@ -39,8 +39,7 @@
                 <div class="col-7" v-else>
                     <select id="d" name="d" class="custom-select" v-model="queryParams.innerDiameter" @change="handleInput">
                         <option value="">All</option>
-                        <option value="duck">Duck</option>
-                        <option value="fish">Fish</option>
+                        <option v-for="(diameter, key) in queryParams.bore == 'hex' ? boreDiameters.hex : boreDiameters.square" :key="key" :value="diameter">{{ diameter }}</option>
                     </select>
                 </div>
             </div>
@@ -57,8 +56,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="offset-4 col-8">
-                    <button name="reset" type="reset" class="btn btn-primary" @click="resetForm">Reset</button>
+                <div class=" col-8">
+                    <button name="reset" type="reset" class="btn btn-outline-success mx-sm-2 d-flex-item" @click="resetForm">Reset</button>
                 </div>
             </div>
         </form>
@@ -81,8 +80,9 @@ export default {
                 outerDiameter: '',
                 length: ''
             },
-            types: [],
-            groups: []
+            productTypes: [],
+            productGroups: [],
+            boreDiameters: {}
         }
     },
     methods: {
@@ -135,15 +135,36 @@ export default {
             this.$emit('filter-input', this.queryParams)
         }
 
-        FilterService.getTypes()
-            .then(response => {
-                this.types = response.data.types
-            })
+        if (sessionStorage.getItem('productTypes')) {
+            this.productTypes = JSON.parse(sessionStorage.getItem('productTypes'))
+        } else {
+            FilterService.getTypes()
+                .then(response => {
+                    this.productTypes = response.data.types
+                    sessionStorage.setItem('productTypes', JSON.stringify(this.productTypes))
+                })
+        }
 
-        FilterService.getGroups()
-            .then(response => {
-                this.groups = response.data.groups
-            })
+        if (sessionStorage.getItem('productGroups')) {
+            this.productGroups = JSON.parse(sessionStorage.getItem('productGroups'))
+        } else {
+            FilterService.getGroups()
+                .then(response => {
+                    this.productGroups = response.data.groups
+                    sessionStorage.setItem('productGroups', JSON.stringify(this.productGroups))
+                })
+        }
+
+        if (sessionStorage.getItem('boreDiameters')) {
+            this.boreDiameters = JSON.parse(sessionStorage.getItem('boreDiameters'))
+        } else {
+            FilterService.getBoreDiameters()
+                .then(response => {
+                    //console.log(response)
+                    this.boreDiameters = response.data
+                    sessionStorage.setItem('boreDiameters', JSON.stringify(this.boreDiameters))
+                })
+        }
 
     }
 

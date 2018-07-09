@@ -20,3 +20,4 @@ Route::get('/catalog', 'ProductsController@indexWithFilters');
 Route::get('/categories', 'CategoryController@index');
 Route::get('catalog/types', 'ProductsController@getTypes');
 Route::get('catalog/groups', 'ProductsController@getGroups');
+Route::get('/bore-diameters', 'ProductsController@getBoreDiameters');

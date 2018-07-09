@@ -19,6 +19,10 @@ export default class FilterService {
         return this.client.get("/catalog/groups")
     }
 
+    getBoreDiameters() {
+        return this.client.get("/bore-diameters")
+    }
+
     // getAllGalleries(params) {
     //     return this.client.get("/galleries", { params })
     // }

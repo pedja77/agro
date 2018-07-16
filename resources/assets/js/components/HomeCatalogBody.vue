@@ -52,6 +52,7 @@ export default {
         }
     },
     created() {
+        //console.log('items', this.items)
         this.currentItems = this.items
     }
 

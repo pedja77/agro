@@ -90,7 +90,7 @@ export default {
             console.log('input', event.target.value)
             console.log('param', this.queryParams)
 
-            if (route().current() == 'home') {
+            if (route().current() != 'catalog') {
                 /*
                 * If the current page is home, persist form in session storage and go to catalog page
                 */

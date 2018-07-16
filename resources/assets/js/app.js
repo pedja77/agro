@@ -15,10 +15,10 @@ window.Vue = require("vue")
  */
 
 //Vue.component("sidebar-menu", require("./components/SidebarMenu.vue"))
-import SidebarMenu from "./components/SidebarMenu.vue"
-import MainContent from "./components/MainContent.vue"
-import PriceList from "./components/PriceList.vue"
-import Filters from "./components/Filters.vue"
+// import SidebarMenu from "./components/SidebarMenu.vue"
+// import MainContent from "./components/MainContent.vue"
+// import PriceList from "./components/PriceList.vue"
+// import Filters from "./components/Filters.vue"
 import HomeCatalogBody from "./components/HomeCatalogBody.vue"
 
 Vue.mixin({
@@ -30,10 +30,10 @@ Vue.mixin({
 const app = new Vue({
     el: "#app",
     components: {
-        SidebarMenu,
-        MainContent,
-        PriceList,
-        Filters,
+        // SidebarMenu,
+        // MainContent,
+        // PriceList,
+        // Filters,
         HomeCatalogBody
     }
 })

@@ -18,8 +18,8 @@ class CatalogController extends Controller
     public function showProduct($id) {
 
         $categories = Category::getCategories();
-        $product = Product::findOrFail($id);
+        $products = Product::findOrFail($id);
 
-        return view('catalog-product', compact(['product', 'categories']));
+        return view('catalog-product', compact(['products', 'categories']));
     }
 }

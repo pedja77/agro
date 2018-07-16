@@ -23,22 +23,6 @@
         @yield('slider')
 
         <div id="app" class="mb-5">
-            {{-- <div class="container mt-5 pt-5">
-                <div class="row mt-4">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <filters />
-                        </div>
-                        <div class="row">
-                            <sidebar-menu :categories="{{ json_encode($categories) }}" />
-                        </div>
-
-                    </div>
-                    <div class="col-md-9">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>  --}}
             @yield('content')
         </div>
 

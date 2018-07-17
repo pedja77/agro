@@ -18,3 +18,8 @@ Route::get('/catalog', 'ProductsController@index')->name('catalog');
 Route::get('/catalog/{id}', 'CatalogController@showProduct')->name('show-product');
 Route::get('/sale', 'SaleController@setSale')->name('sale');
 Route::get('/services', 'ServicesController@setServices')->name('services');
+Route::get('/register', 'AuthController@showRegisterForm');
+Route::post('/register', 'AuthController@register');
+Route::get('/login', 'AuthController@showLoginForm')->name('login');
+Route::post('login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout');

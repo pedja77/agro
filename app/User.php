@@ -14,16 +14,26 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    // protected $fillable = [
+    //     'name', 'email', 'password',
+    // ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    // protected $hidden = [
+    //     'password', 'remember_token',
+    // ];
+
+    protected $table='customers_table';
+    protected $primaryKey = 'ID';
+    public $timestamps = false;
+    public $rememberToken = false;
+
+    public function getAuthPassword() {
+        // Override this method because of column naming in db
+        return $this->user_pwd;
+    }
 }

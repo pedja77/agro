@@ -36,4 +36,16 @@ class User extends Authenticatable
         // Override this method because of column naming in db
         return $this->user_pwd;
     }
+
+    /**
+     * Overrides the method to ignore the remember token.
+     */
+    public function setAttribute($key, $value)
+    {
+        $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+        if (!$isRememberTokenAttribute)
+        {
+            parent::setAttribute($key, $value);
+        }
+    }
 }

@@ -36,7 +36,7 @@ class AuthController extends Controller
     public function register(Request $request) {
 
         \Log::debug(request()->first_name);
-        $validator = $this->validator(request()->all());
+        $validator = $this->validator(request()->except(['_token']));
         if ($validator->fails()) {
             //dd(response()->json($validator->errors(), 422));
             return response()->json($validator->errors(), 422);

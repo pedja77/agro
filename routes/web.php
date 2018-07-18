@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'UnderConstructionController@create');
+Route::get('/', function() {
+    return redirect('/home');
+});
 
 Route::get('/home', 'HomeController@setHome')->name('home');
 Route::get('/catalog', 'ProductsController@index')->name('catalog');

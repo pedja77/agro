@@ -30,9 +30,16 @@ class ProductsController extends Controller
                                 ->where('B', 'like', '%'.$length.'%')
                                 ->paginate(20);
 
-        } else { // videti po kojoj se koloni kada  filtrira
+        } elseif ($bore === 'hex' || $bore === 'square') { // videti po kojoj se koloni kada  filtrira
             $products = Product::where('podtip_en', 'like', '%'.$bore.'%')
                                 ->where('tip_en', 'like', '%'.$type.'%')
+                                ->where('grupa_en', 'like', '%'.$group.'%')
+                                ->where('A_', 'like', "%$innerDiameter%")
+                                ->where('D', 'like', '%'.$outerDiameter.'%')
+                                ->where('B', 'like', '%'.$length.'%')
+                                ->paginate(20);
+        } else {
+            $products = Product::where('tip_en', 'like', '%'.$type.'%')
                                 ->where('grupa_en', 'like', '%'.$group.'%')
                                 ->where('D_', 'like', "%$innerDiameter%")
                                 ->where('D', 'like', '%'.$outerDiameter.'%')

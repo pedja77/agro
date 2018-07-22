@@ -33,25 +33,47 @@
       </li>
     </ul>
     @if(!Auth::check())
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-       </li>
-    </ul>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-item">
+                    <form method="POST" action="/login">
+
+                    {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <label for="emil_choveka">Email</label>
+                        <input id="emil_choveka" name="emil_choveka" placeholder="Email" type="email" required="required" class="form-control here">
+                    </div>
+                    <div class="form-group">
+                        <label for="user_pwd">Password</label>
+                        <input id="user_pwd" name="user_pwd" placeholder="Password" type="password" required="required" class="form-control here">
+                    </div>
+                    <div class="form-group">
+                        <button name="submit" type="submit" class="btn btn-outline-success">Login</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+        </li>
+        </ul>
     @else
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ Auth::user()->user_name }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/logout">Logout</a>
-        </div>
-      </li>
-    </ul>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ Auth::user()->user_name }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+        </li>
+        </ul>
     @endif
     {{-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

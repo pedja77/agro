@@ -34,6 +34,9 @@ export default {
     props: ['items'],
     created() {
         console.log('Items(main):', this.items)
+    },
+    updated() {
+        console.log('Items(main-updated):', this.items)
     }
 
 }

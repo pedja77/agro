@@ -2,42 +2,42 @@
 
 // login vars
 
-$use_uc_password!='monolith';
+// $use_uc_password!='monolith';
 
-	if($use_uc_password!=''){ // pass
+// 	if($use_uc_password!=''){ // pass
 
-		$gateway = "Pages under construction. Enter client login : <form action=\"index.php\" method=\"get\"><input id=\"uce\" name=\"uce\" type=\"text\" /></form>";
+// 		$gateway = "Pages under construction. Enter client login : <form action=\"index.php\" method=\"get\"><input id=\"uce\" name=\"uce\" type=\"text\" /></form>";
 
-		if(isset($_GET['uce'])){
+// 		if(isset($_GET['uce'])){
 
-			if($_GET['uce']==$use_uc_password){
-				setcookie("uce", $use_uc_password);
-			}else{
-				setcookie("uce", '');
-				echo $gateway;
-				die;
-			}
+// 			if($_GET['uce']==$use_uc_password){
+// 				setcookie("uce", $use_uc_password);
+// 			}else{
+// 				setcookie("uce", '');
+// 				echo $gateway;
+// 				die;
+// 			}
 
-		}else{
+// 		}else{
 
-			if (isset($_COOKIE["uce"])){
+// 			if (isset($_COOKIE["uce"])){
 
-				if($_COOKIE["uce"]==$use_uc_password){
-					// pass
-					setcookie("uce", $use_uc_password);
-				}else{
-					echo $gateway;
-					die;
-				}
+// 				if($_COOKIE["uce"]==$use_uc_password){
+// 					// pass
+// 					setcookie("uce", $use_uc_password);
+// 				}else{
+// 					echo $gateway;
+// 					die;
+// 				}
 
-			}else{
-				echo $gateway;
-				die;
-			}
+// 			}else{
+// 				echo $gateway;
+// 				die;
+// 			}
 
-		}
+// 		}
 
-	} // usepass end
+// 	} // usepass end
 
 /**
  * Laravel - A PHP Framework For Web Artisans

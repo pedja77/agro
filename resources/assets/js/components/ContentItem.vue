@@ -23,7 +23,6 @@ export default {
     methods: {
         setPlaceholderImgUrl(e) {
 
-           console.log('url', e.target.src)
            e.target.src = 'images/no_photo.jpeg'
         }
     }

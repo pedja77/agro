@@ -11,17 +11,25 @@
 |
 */
 
-Route::get('/', function() {
-    return redirect('/home');
+Route::get('/under-construction', 'UnderConstructionController@create');
+Route::post('/check-invitation', 'UnderConstructionController@check');
+//  Route::get('/catalog', 'ProductsController@index')->name('catalog');
+// Route::get('/catalog/{id}', 'CatalogController@showProduct')->name('show-product');
+
+Route::group(['middleware' => ['invitation']], function() {
+    Route::get('/', function() {
+      return redirect('/home');
+    });
+    Route::get('/home', 'HomeController@setHome')->name('home')->middleware('invitation');
+    Route::get('/catalog', 'ProductsController@index')->name('catalog');
+    Route::get('/catalog/{id}', 'CatalogController@showProduct')->name('show-product');
+    Route::get('/sale', 'SaleController@setSale')->name('sale');
+    Route::get('/services', 'ServicesController@setServices')->name('services');
+    Route::get('/register', 'AuthController@showRegisterForm');
+    Route::post('/register', 'AuthController@register');
+    Route::get('/login', 'AuthController@showLoginForm')->name('login');
+    Route::post('/login', 'AuthController@login');
+    Route::get('/logout', 'AuthController@logout');
 });
 
-Route::get('/home', 'HomeController@setHome')->name('home');
-Route::get('/catalog', 'ProductsController@index')->name('catalog');
-Route::get('/catalog/{id}', 'CatalogController@showProduct')->name('show-product');
-Route::get('/sale', 'SaleController@setSale')->name('sale');
-Route::get('/services', 'ServicesController@setServices')->name('services');
-Route::get('/register', 'AuthController@showRegisterForm');
-Route::post('/register', 'AuthController@register');
-Route::get('/login', 'AuthController@showLoginForm')->name('login');
-Route::post('login', 'AuthController@login');
-Route::get('/logout', 'AuthController@logout');
+

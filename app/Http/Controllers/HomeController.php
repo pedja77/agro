@@ -25,9 +25,6 @@ class HomeController extends Controller
         $categories = $this->getCategories();
         $newProducts = $this->getNewProducts();
 
-        //dd(compact(['categories', 'newProducts']));
-
-
         return view('home', compact(['categories', 'newProducts']));
     }
 

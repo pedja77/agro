@@ -55,7 +55,7 @@ class ProductsController extends Controller
         $products = Product::paginate(20);
         $categories = $this->getCategories();
 
-        //dd(compact(['products', 'categories']));
+        //dd(response()->json(compact(['products', 'categories'])));
         return view('catalog', compact(['products', 'categories']));
     }
 

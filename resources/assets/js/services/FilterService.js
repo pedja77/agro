@@ -3,11 +3,12 @@ import Axios from "axios"
 export default class FilterService {
     constructor() {
         this.client = new Axios.create({
-            baseURL: "http://localhost:8000/api/"
+            baseURL: "http://agrobearings.com/api"    // "http://localhost:8000/api/"
         })
     }
 
     getFilteredProducts(params) {
+        console.log("enc", process.env.MIX_APP_URL)
         return this.client.get("/catalog", { params })
     }
 

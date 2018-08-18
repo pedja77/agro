@@ -92,7 +92,7 @@ export default {
 
             if (route().current() != 'catalog') {
                 /*
-                * If the current page is home, persist form in session storage and go to catalog page
+                * If the current page is not catalog, persist form in session storage and go to catalog page
                 */
                 console.log('We are at home.')
                 sessionStorage.setItem('queryParams', JSON.stringify(this.queryParams))
@@ -125,6 +125,7 @@ export default {
         }
     },
     created() {
+
         if (sessionStorage.getItem('queryParams')) {
             /*
             * If queryParams exists in session storage, restore the state of the filters and fire up event to request

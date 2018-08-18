@@ -16,7 +16,7 @@ class UnderConstructionController extends Controller
         if ($request->invitation_pass === 'monolith') {
             //dd('pass works');
             \Log::info($_COOKIE);
-            Cookie::queue(Cookie::make('invitation', 'You are invited'));
+            Cookie::queue(Cookie::make('invitation', 'You are invited', 1000000));
             return redirect('/home');
         } else {
             return redirect('/under-construction');
